@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ModMetaData>
+  <name>Test Mod - Grass Cow</name>
+  <author>Bowab</author>
+  <supportedVersions>
+    <li>1.3</li>
+  </supportedVersions>
+  <description>
+    V1.0
+    This mod adds a cow that spawns grass on all the tiles it walks.
+  </description>
+  <packageId>bowab.grasscow</packageId>
+
+</ModMetaData>
