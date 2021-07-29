@@ -22,7 +22,8 @@ namespace Pinatacow
         {
             get
             {
-                return this.Props.Amount;
+                var rng = new Random();
+                return rng.Next(this.Props.minAmount, this.Props.maxAmount + 1);
             }
         }
 

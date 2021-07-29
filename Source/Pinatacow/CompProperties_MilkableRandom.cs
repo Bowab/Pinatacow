@@ -18,7 +18,8 @@ namespace Pinatacow
         }
 
         public int IntervalDays;
-        public int Amount = 1;
+        public int minAmount = 1;
+        public int maxAmount = 2;
         public List<ThingDef> defList;
         public bool FemaleOnly = true;
 
