@@ -9,6 +9,9 @@
   <description>
     This mod adds a Pinata that produces a random item when milked.
 
+    Q: Compatibile with A Dog Said?
+    A: Yes. You need A Dog Said and LBE's A Dog Said Easy Patcher loaded before this mod.
+
     Artwork by Angelica.
   </description>
   <packageId>bowab.pinata</packageId>

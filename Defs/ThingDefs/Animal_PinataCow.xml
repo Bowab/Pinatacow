@@ -2,7 +2,7 @@
 
 <Defs>
 
-  <ThingDef Class="Pinatacow.ThingDef_Pinatacow" ParentName="AnimalThingBase">
+  <ThingDef Class="Pinatacow.ThingDef_Pinatacow" ParentName="AnimalThingBase" ADogSaidBody="LegsTail">
     <defName>Bowab_Pinatacow</defName>
     <label>pinata</label>
     <devNote>cow</devNote>
