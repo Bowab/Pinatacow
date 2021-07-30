@@ -14,7 +14,7 @@ namespace Pinatacow
         {
             get
             {
-                return this.Props.IntervalDays;
+                return this.Props.intervalDays;
             }
         }
 

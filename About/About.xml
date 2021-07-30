@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ModMetaData>
-  <name>Pinatacow</name>
-  <author>Bowab</author>
+  <name>Pinata</name>
+  <author>Bowab, Angelica</author>
   <supportedVersions>
     <li>1.3</li>
   </supportedVersions>
   <description>
-    V1.0
-    This mod adds a Pinatacow that produces a random item when milked.
+    This mod adds a Pinata that produces a random item when milked.
+
+    Artwork by Angelica.
   </description>
-  <packageId>bowab.pinatacow</packageId>
+  <packageId>bowab.pinata</packageId>
 
 </ModMetaData>

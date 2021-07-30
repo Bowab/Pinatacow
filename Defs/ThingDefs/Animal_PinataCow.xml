@@ -4,9 +4,9 @@
 
   <ThingDef Class="Pinatacow.ThingDef_Pinatacow" ParentName="AnimalThingBase">
     <defName>Bowab_Pinatacow</defName>
-    <label>pinata cow</label>
+    <label>pinata</label>
     <devNote>cow</devNote>
-    <description>A pinata cow, you never know what it produces.</description>
+    <description>A pinata, you never know what it produces.</description>
     <statBases>
       <MoveSpeed>4.1</MoveSpeed>
       <ComfyTemperatureMin>-20</ComfyTemperatureMin>
@@ -17,7 +17,7 @@
     <uiIconScale>1.35</uiIconScale>
     <comps>
       <li Class="Pinatacow.CompProperties_MilkableRandom">
-        <IntervalDays>1</IntervalDays>
+        <intervalDays>1</intervalDays>
         <minAmount>4</minAmount>
         <maxAmount>24</maxAmount>
         <defList>
@@ -135,7 +135,7 @@
 
   <PawnKindDef ParentName="AnimalKindBase">
     <defName>Bowab_Pinatacow</defName>
-    <label>pinata cow</label>
+    <label>pinata</label>
     <race>Bowab_Pinatacow</race>
     <combatPower>65</combatPower>
     <ecoSystemWeight>0.55</ecoSystemWeight>
@@ -145,7 +145,6 @@
         <bodyGraphicData>
           <texPath>Things/Pinatacow/Bowab_Pinatacow</texPath>
           <drawSize>1.3</drawSize>
-          <color>(180,148,109)</color>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
           <texPath>Things/Pawn/Animal/Alpaca/Dessicated_Alpaca</texPath>
@@ -156,7 +155,6 @@
         <bodyGraphicData>
           <texPath>Things/Pinatacow/Bowab_Pinatacow</texPath>
           <drawSize>1.9</drawSize>
-          <color>(180,148,109)</color>
           <shadowData>
             <volume>(0.3, 0.3, 0.3)</volume>
             <offset>(0,0,-0.3)</offset>
@@ -171,7 +169,6 @@
         <bodyGraphicData>
           <texPath>Things/Pinatacow/Bowab_Pinatacow</texPath>
           <drawSize>2.2</drawSize>
-          <color>(180,148,109)</color>
           <shadowData>
             <volume>(0.4, 0.4, 0.4)</volume>
             <offset>(0,0,-0.2)</offset>
