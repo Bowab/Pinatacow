@@ -23,7 +23,7 @@ namespace Pinatacow
             get
             {
                 var rng = new Random();
-                return rng.Next(this.Props.minAmount, this.Props.maxAmount + 1);
+                return rng.Next((int)PinataMod.MinAmount, (int)PinataMod.MaxAmount + 1);
             }
         }
 
@@ -32,7 +32,10 @@ namespace Pinatacow
         {
             get
             {
-                return this.Props.defList.RandomElement();
+                var listOfMilkableItems = PinataMod.PossibleMilkableItems;
+                var possibleItems = PinataMod.PossibleThingDefs().Where(x => listOfMilkableItems.Contains(x.defName)).ToList();
+
+                return possibleItems.RandomElement();
             }
         }
 

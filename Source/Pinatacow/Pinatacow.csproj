@@ -61,7 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PinatacowComp.cs" />
+    <Compile Include="PinataMod.cs" />
     <Compile Include="PinataSettings.cs" />
     <Compile Include="WorkGiver_MilkRandom.cs" />
     <Compile Include="JobDriver_MilkRandom.cs" />

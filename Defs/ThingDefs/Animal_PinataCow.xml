@@ -17,32 +17,8 @@
     <uiIconScale>1.35</uiIconScale>
     <comps>
       <li Class="Pinatacow.CompProperties_MilkableRandom">
-        <intervalDays>1</intervalDays>
-        <minAmount>4</minAmount>
-        <maxAmount>24</maxAmount>
-        <defList>
-          <li>Milk</li>
-          <li>Hay</li>
-          <li>Steel</li>
-          <li>Plasteel</li>
-          <li>WoodLog</li>
-          <li>Uranium</li>
-          <li>Jade</li>
-          <li>Cloth</li>
-          <li>Synthread</li>
-          <li>DevilstrandCloth</li>
-          <li>Hyperweave</li>
-          <li>Silver</li>
-          <li>Gold</li>
-          <li>RawPotatoes</li>
-          <li>RawFungus</li>
-          <li>RawRice</li>
-          <li>RawAgave</li>
-          <li>MedicineHerbal</li>
-          <li>MedicineIndustrial</li>
-          <li>MedicineUltratech</li>
-          <li>ComponentIndustrial</li>
-        </defList>
+        <!--<intervalDays>1</intervalDays>-->
+        <intervalDays>0.05</intervalDays>
       </li>
       <li Class="CompProperties_Shearable">
         <woolDef>WoolAlpaca</woolDef>
