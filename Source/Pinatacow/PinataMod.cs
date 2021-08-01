@@ -82,11 +82,13 @@ namespace Pinatacow
             listingStandard.Label("Maximum amount - " + displayMax.ToString());
             settings.maxAmount = listingStandard.Slider(settings.maxAmount, 1f, 300f);
 
+            listingStandard.Label("NOTE: Only items that stacks is gathered as multiple items. For example a bionic spine would only be gathered as 1x");
+
             listingStandard.End();
 
             #region Add item
 
-            Rect addItem = new Rect(0f, 148f, 200f, 32f);
+            Rect addItem = new Rect(0f, 172f, 200f, 32f);
             bool flag = Widgets.ButtonText(addItem, "Add to list", true, true, true);
             if (flag)
             {
@@ -113,7 +115,7 @@ namespace Pinatacow
 
             #region Remove item
 
-            Rect removeRect = new Rect(0f, 180f, 200f, 32f);
+            Rect removeRect = new Rect(0f, 204f, 200f, 32f);
             bool removeFlag = Widgets.ButtonText(removeRect, "Remove item", true, true, true);
             if (removeFlag)
             {
@@ -137,7 +139,7 @@ namespace Pinatacow
 
             #region Reset list of items
 
-            Rect resetList = new Rect(0f, 212f, 200f, 32f);
+            Rect resetList = new Rect(0f, 236f, 200f, 32f);
             bool resetFlag = Widgets.ButtonText(resetList, "Reset list", true, true, true);
             if (resetFlag)
             {
@@ -152,7 +154,7 @@ namespace Pinatacow
 
             #region Empty the list
 
-            Rect emptyList = new Rect(0f, 244f, 200f, 32f);
+            Rect emptyList = new Rect(0f, 268f, 200f, 32f);
             bool emptyFlag = Widgets.ButtonText(emptyList, "Empty the list", true, true, true);
             if (emptyFlag)
             {
@@ -163,11 +165,11 @@ namespace Pinatacow
 
             #region The list GUI
 
-            var startHeight = 244f;
-            Rect position = inRect.TopPart(0.92f);
+            var startHeight = 268f;
+            Rect position = inRect.TopPart(0.90f);
             GUI.BeginGroup(position);
-            Rect outRect = new Rect(0f, 244f, position.width, position.height);
-            Rect viewRect = new Rect(0f, 244f, position.width, this.scrollViewHeight);
+            Rect outRect = new Rect(0f, 268f, position.width, position.height);
+            Rect viewRect = new Rect(0f, 268f, position.width, this.scrollViewHeight);
             Widgets.BeginScrollView(outRect, ref this.scrollPosition, viewRect, true);
 
             foreach (var item in settings.listOfMilkableItems)

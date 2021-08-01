@@ -18,12 +18,21 @@ namespace Pinatacow
             }
         }
 
+        /// <summary>
+        /// This is set in <see cref="JobDriver_MilkRandom"/>
+        /// </summary>
+        public ThingDef ItemToSpawn { get; set; }
+
         protected override int ResourceAmount
         {
             get
             {
-                var rng = new Random();
-                return rng.Next((int)PinataMod.MinAmount, (int)PinataMod.MaxAmount + 1);
+                if (ItemToSpawn != null && ItemToSpawn.stackLimit > 1)
+                {
+                    var rng = new Random();
+                    return rng.Next((int)PinataMod.MinAmount, (int)PinataMod.MaxAmount + 1);
+                }
+                return 1;
             }
         }
 
@@ -32,11 +41,10 @@ namespace Pinatacow
         {
             get
             {
-                // Det sker en loop långt bak i koden, denna behöver vi fixa med så att det inte blir random varje gång.
-                var itemToSpawnAsString = PinataMod.PossibleMilkableItems.RandomElement();
-                var itemToSpawn = PinataMod.PossibleThingDefs().FirstOrDefault(x => x.defName == itemToSpawnAsString);
-                Log.Message("DETTA SKA SPAWNA: " + itemToSpawn);
-                return itemToSpawn;
+                if (ItemToSpawn == null)
+                    ItemToSpawn = PinataMod.PossibleThingDefs().FirstOrDefault(x => x.defName == "Milk"); // Backup.
+
+                return ItemToSpawn;
             }
         }
 

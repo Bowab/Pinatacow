@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Verse;
 using RimWorld;
 using UnityEngine;
-using SettingsHelper;
 
 namespace Pinatacow
 {
@@ -49,8 +48,8 @@ namespace Pinatacow
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Collections.Look(ref listOfMilkableItems, "listOfMilkableItems", LookMode.Value);
 
+            Scribe_Collections.Look(ref listOfMilkableItems, "listOfMilkableItems", LookMode.Value);
             Scribe_Values.Look(ref minAmount, "minAmount", 1f);
             Scribe_Values.Look(ref maxAmount, "maxAmount", 24f);
         }
