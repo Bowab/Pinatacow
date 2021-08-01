@@ -86,7 +86,7 @@ namespace Pinatacow
 
             #region Add item
 
-            Rect addItem = new Rect(0f, 128f, 200f, 32f);
+            Rect addItem = new Rect(0f, 148f, 200f, 32f);
             bool flag = Widgets.ButtonText(addItem, "Add to list", true, true, true);
             if (flag)
             {
@@ -113,7 +113,7 @@ namespace Pinatacow
 
             #region Remove item
 
-            Rect removeRect = new Rect(0f, 160f, 200f, 32f);
+            Rect removeRect = new Rect(0f, 180f, 200f, 32f);
             bool removeFlag = Widgets.ButtonText(removeRect, "Remove item", true, true, true);
             if (removeFlag)
             {
@@ -137,7 +137,7 @@ namespace Pinatacow
 
             #region Reset list of items
 
-            Rect resetList = new Rect(0f, 192f, 200f, 32f);
+            Rect resetList = new Rect(0f, 212f, 200f, 32f);
             bool resetFlag = Widgets.ButtonText(resetList, "Reset list", true, true, true);
             if (resetFlag)
             {
@@ -153,7 +153,7 @@ namespace Pinatacow
 
             #region Empty the list
 
-            Rect emptyList = new Rect(0f, 224f, 200f, 32f);
+            Rect emptyList = new Rect(0f, 244f, 200f, 32f);
             bool emptyFlag = Widgets.ButtonText(emptyList, "Empty the list", true, true, true);
             if (emptyFlag)
             {
@@ -164,11 +164,11 @@ namespace Pinatacow
 
             #region The list
 
-            var startHeight = 224f;
-            Rect position = inRect.TopPart(0.75f);
+            var startHeight = 244f;
+            Rect position = inRect.TopPart(0.92f);
             GUI.BeginGroup(position);
-            Rect outRect = new Rect(0f, 224f, position.width, position.height);
-            Rect viewRect = new Rect(0f, 224f, position.width, this.scrollViewHeight);
+            Rect outRect = new Rect(0f, 244f, position.width, position.height);
+            Rect viewRect = new Rect(0f, 244f, position.width, this.scrollViewHeight);
             Widgets.BeginScrollView(outRect, ref this.scrollPosition, viewRect, true);
 
             foreach (var item in settings.listOfMilkableItems)
@@ -204,7 +204,7 @@ namespace Pinatacow
         /// <returns>The (translated) mod name.</returns>
         public override string SettingsCategory()
         {
-            return "Pinata".Translate(); // TODO: Fix a value in Keys.xml.
+            return "Bowa_PinataModSettings".Translate(); // TODO: Fix a value in Keys.xml.
         }
 
         /// <summary>
