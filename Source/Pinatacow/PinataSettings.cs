@@ -15,8 +15,8 @@ namespace Pinatacow
         /// <summary>
         /// The three settings our mod has.
         /// </summary>
-        public List<ThingDef> listOfMilkableItems = new List<ThingDef>();
-        public List<string> listOfMilkableItemsAsString = new List<string>();
+        //public List<ThingDef> listOfMilkableItems = new List<ThingDef>();
+        public List<string> listOfMilkableItems = new List<string>();
 
         /// <summary>
         /// The part that writes our settings to file. Note that saving is by ref.
@@ -25,14 +25,12 @@ namespace Pinatacow
         {
             base.ExposeData();
 
-            Scribe_Collections.Look(ref listOfMilkableItemsAsString, "listOfMilkableItems", LookMode.Value);
-
-            /*Scribe_Collections.Look(ref exampleListOfPawns, "exampleListOfPawns", LookMode.Reference);*/ // Remove
+            Scribe_Collections.Look(ref listOfMilkableItems, "listOfMilkableItems", LookMode.Value);
 
             //bool flag = Scribe.mode == LoadSaveMode.LoadingVars;
             //if (flag)
             //{
-            //    List<ThingDef> list = new List<ThingDef>();
+            //    List<string> list = new List<string>();
             //    bool flag2 = false;
             //    for (int i = 0; i < listOfMilkableItems.Count; i++)
             //    {
@@ -87,38 +85,31 @@ namespace Pinatacow
         /// <param name="inRect">A Unity Rect with the size of the settings window.</param>
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            Listing_Standard listingStandard = new Listing_Standard();
-            listingStandard.Begin(inRect);
-
+            // Standard
+            //Listing_Standard listingStandard = new Listing_Standard();
+            //listingStandard.Begin(inRect);
+            //listingStandard.End();
 
             // Eget experiment
             // Rect skit
-            Rect rect1 = inRect.TopPart(0.25f);
+            Rect rect1 = inRect.TopPart(0.10f);
             bool flag = Widgets.ButtonText(rect1, "Add to list", true, true, true);
-            Log.Message("ngn flag: " + flag.ToString());
             if (flag)
             {
+                Log.Message("flag knappen är öppen: " + flag.ToString());
+
                 List<FloatMenuOption> list = new List<FloatMenuOption>();
 
                 var possibleMilkedItems = PossibleThingDefs();
 
                 foreach (var item in possibleMilkedItems)
                 {
-
-                    //if (!settings.listOfMilkableItems.Contains(item))
-                    //{
-                    //    list.Add(new FloatMenuOption(item.label, delegate ()
-                    //    {
-                    //        settings.listOfMilkableItems.Add(item); // This is what adds the ThingDef to the list.
-
-                    //    }));
-                    //}
-
-                    if (!settings.listOfMilkableItemsAsString.Contains(item.label))
+                    if (!settings.listOfMilkableItems.Contains(item.defName))
                     {
+                        // Show label of item, but save it as defName, since these are unique.
                         list.Add(new FloatMenuOption(item.label, delegate ()
                         {
-                            settings.listOfMilkableItemsAsString.Add(item.label);
+                            settings.listOfMilkableItems.Add(item.defName); // This is what adds the item to the list.
                         }));
                     }
                 }
@@ -127,11 +118,41 @@ namespace Pinatacow
             }
 
 
+            // Lista med saker som man ser.
+            var thingDefs = PossibleThingDefs(); // TODO: Lägg på bättre ställe?
+            Log.Message("Jag spammar, inte bra!");
 
-            // Standard
-            listingStandard.End();
+
+            var startHeight = 128f;
+            Rect position = rect1.BottomPart(0.32f).Rounded();
+
+            //GUI.BeginGroup(position);
+
+            Rect viewRect = new Rect(0f, 0f, position.width, 0f);
+            
+            foreach (var item in settings.listOfMilkableItems)
+            {
+                Rect rect2 = new Rect(0f, startHeight, viewRect.width, 32f);
+
+                var thingDef = thingDefs.FirstOrDefault(x => x.defName == item);
+                if (thingDef != null)
+                {
+                    Widgets.Label(rect2, thingDef.label);
+                    Widgets.ThingIcon(rect2, thingDef);
+
+                }
+                startHeight = startHeight + 32f; // öka på så att varje item i listan hamnar på egen rad.
+            }
+            //GUI.EndGroup();
+
+
+
+
             base.DoSettingsWindowContents(inRect);
         }
+
+        private float scrollViewHeight = 0f;
+        private Vector2 scrollPosition = Vector2.zero;
 
         /// <summary>
         /// Override SettingsCategory to show up in the list of settings.
@@ -147,7 +168,7 @@ namespace Pinatacow
         public static IEnumerable<ThingDef> PossibleThingDefs()
         {
             return from d in DefDatabase<ThingDef>.AllDefs
-                   where d.category == ThingCategory.Item && d.scatterableOnMapGen && !d.destroyOnDrop && !d.MadeFromStuff && (d.GetCompProperties<CompProperties_Rottable>() == null)
+                   where d.category == ThingCategory.Item && d.scatterableOnMapGen && !d.destroyOnDrop && !d.MadeFromStuff
                    select d;
         }
     }
