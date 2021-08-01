@@ -17,8 +17,7 @@
     <uiIconScale>1.35</uiIconScale>
     <comps>
       <li Class="Pinatacow.CompProperties_MilkableRandom">
-        <!--<intervalDays>1</intervalDays>-->
-        <intervalDays>0.05</intervalDays>
+        <intervalDays>1</intervalDays>
       </li>
       <li Class="CompProperties_Shearable">
         <woolDef>WoolAlpaca</woolDef>
