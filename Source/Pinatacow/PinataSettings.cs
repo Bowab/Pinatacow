@@ -63,6 +63,11 @@ namespace Pinatacow
         /// </summary>
         PinataSettings settings;
 
+        IEnumerable<ThingDef> allThingDefs = new List<ThingDef>();
+
+        List<string> originalList = new List<string>();
+
+
         /// <summary>
         /// A mandatory constructor which resolves the reference to our settings.
         /// </summary>
@@ -71,13 +76,35 @@ namespace Pinatacow
         {
             //LongEventHandler.ExecuteWhenFinished(new Action(this.GetSettings));
             this.settings = GetSettings<PinataSettings>();
+            this.allThingDefs = PossibleThingDefs();
 
+            List<string> resetList = new List<string>()
+            {
+                "Milk",
+                "Hay",
+                "Steel",
+                "Plasteel",
+                "WoodLog",
+                "Uranium",
+                "Jade",
+                "Cloth",
+                "Synthread",
+                "DevilstrandCloth",
+                "Hyperweave",
+                "Silver",
+                "Gold",
+                "RawPotatoes",
+                "RawFungus",
+                "RawRice",
+                "RawAgave",
+                "MedicineHerbal",
+                "MedicineIndustrial",
+                "MedicineUltratech",
+                "ComponentIndustrial",
+            };
+
+            this.originalList = resetList;
         }
-
-        //public void GetSettings()
-        //{
-        //    this.settings = base.GetSettings<PinataSettings>();
-        //}
 
         /// <summary>
         /// The (optional) GUI part to set your settings.
@@ -90,8 +117,9 @@ namespace Pinatacow
             //listingStandard.Begin(inRect);
             //listingStandard.End();
 
-            // Eget experiment
-            // Rect skit
+
+            #region Add item
+
             Rect rect1 = inRect.TopPart(0.10f);
             bool flag = Widgets.ButtonText(rect1, "Add to list", true, true, true);
             if (flag)
@@ -100,7 +128,7 @@ namespace Pinatacow
 
                 List<FloatMenuOption> list = new List<FloatMenuOption>();
 
-                var possibleMilkedItems = PossibleThingDefs();
+                var possibleMilkedItems = this.allThingDefs;
 
                 foreach (var item in possibleMilkedItems)
                 {
@@ -117,41 +145,91 @@ namespace Pinatacow
                 Find.WindowStack.Add(window);
             }
 
+            #endregion Add item
 
-            // Lista med saker som man ser.
-            var thingDefs = PossibleThingDefs(); // TODO: Lägg på bättre ställe?
-            Log.Message("Jag spammar, inte bra!");
+            #region Remove item
+
+            Rect removeRect = new Rect(0f, 96f, 200f, 32f);
+            bool removeFlag = Widgets.ButtonText(removeRect, "Remove item", true, true, true);
+            if (removeFlag)
+            {
+                var possibleMilkedItems = this.allThingDefs;
+                List<FloatMenuOption> listOfItems = new List<FloatMenuOption>();
+                var loopMe = settings.listOfMilkableItems;
+                foreach (var item in loopMe)
+                {
+                    var thingDef = possibleMilkedItems.FirstOrDefault(x => x.defName == item);
+                    listOfItems.Add(new FloatMenuOption(thingDef.label, delegate ()
+                    {
+                        settings.listOfMilkableItems.Remove(thingDef.defName);
+
+                    }, MenuOptionPriority.Default, null, null, 0f, null, null, true, 0));
+                }
+                FloatMenu window2 = new FloatMenu(listOfItems);
+                Find.WindowStack.Add(window2);
+            }
+
+            #endregion Remove item
+
+            #region Reset list of items
+
+            Rect resetList = new Rect(0f, 128f, 200f, 32f);
+            bool resetFlag = Widgets.ButtonText(resetList, "Reset list", true, true, true);
+            if (resetFlag)
+            {
+                settings.listOfMilkableItems.Clear();
+                foreach (var item in originalList)
+                {
+                    settings.listOfMilkableItems.Add(item);
+                }
+            }
+
+            #endregion Reset list of items
 
 
-            var startHeight = 128f;
-            Rect position = rect1.BottomPart(0.32f).Rounded();
+            #region Empty the list
 
-            //GUI.BeginGroup(position);
+            Rect emptyList = new Rect(0f, 160f, 200f, 32f);
+            bool emptyFlag = Widgets.ButtonText(emptyList, "Empty the list", true, true, true);
+            if (emptyFlag)
+            {
+                settings.listOfMilkableItems.Clear();
+            }
 
-            Rect viewRect = new Rect(0f, 0f, position.width, 0f);
-            
+            #endregion Empty the list
+
+            #region The list
+
+            var startHeight = 160f;
+            Rect position = inRect.TopPart(0.75f);
+            GUI.BeginGroup(position);
+            Rect outRect = new Rect(0f, 160f, position.width, position.height);
+            Rect viewRect = new Rect(0f, 160f, position.width, this.scrollViewHeight);
+            Widgets.BeginScrollView(outRect, ref this.scrollPosition, viewRect, true);
+
             foreach (var item in settings.listOfMilkableItems)
             {
-                Rect rect2 = new Rect(0f, startHeight, viewRect.width, 32f);
+                Rect rectList = new Rect(0f, startHeight, viewRect.width, 32f);
 
-                var thingDef = thingDefs.FirstOrDefault(x => x.defName == item);
+                var thingDef = this.allThingDefs.FirstOrDefault(x => x.defName == item);
                 if (thingDef != null)
                 {
-                    Widgets.Label(rect2, thingDef.label);
-                    Widgets.ThingIcon(rect2, thingDef);
+                    Widgets.Label(rectList, thingDef.label);
+                    Widgets.ThingIcon(rectList, thingDef);
 
                 }
-                startHeight = startHeight + 32f; // öka på så att varje item i listan hamnar på egen rad.
+                startHeight = startHeight + 32f; // Increase everytime to make the new row in the list.
+                this.scrollViewHeight = startHeight;
             }
-            //GUI.EndGroup();
+            Widgets.EndScrollView();
+            GUI.EndGroup();
 
-
-
+            #endregion The list
 
             base.DoSettingsWindowContents(inRect);
         }
 
-        private float scrollViewHeight = 0f;
+        private float scrollViewHeight = 96f;
         private Vector2 scrollPosition = Vector2.zero;
 
         /// <summary>
@@ -164,6 +242,17 @@ namespace Pinatacow
             return "Pinata".Translate();
         }
 
+        /// <summary>
+        /// Final method that runs
+        /// </summary>
+        public override void WriteSettings()
+        {
+            // Make sure we have atleast one possible item.
+            if (settings.listOfMilkableItems.Count <= 0)
+                settings.listOfMilkableItems.Add("Milk");
+
+            base.WriteSettings();
+        }
 
         public static IEnumerable<ThingDef> PossibleThingDefs()
         {
