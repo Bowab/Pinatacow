@@ -32,10 +32,11 @@ namespace Pinatacow
         {
             get
             {
-                var listOfMilkableItems = PinataMod.PossibleMilkableItems;
-                var possibleItems = PinataMod.PossibleThingDefs().Where(x => listOfMilkableItems.Contains(x.defName)).ToList();
-
-                return possibleItems.RandomElement();
+                // Det sker en loop långt bak i koden, denna behöver vi fixa med så att det inte blir random varje gång.
+                var itemToSpawnAsString = PinataMod.PossibleMilkableItems.RandomElement();
+                var itemToSpawn = PinataMod.PossibleThingDefs().FirstOrDefault(x => x.defName == itemToSpawnAsString);
+                Log.Message("DETTA SKA SPAWNA: " + itemToSpawn);
+                return itemToSpawn;
             }
         }
 

@@ -17,6 +17,5 @@ namespace Pinatacow
 
         public int intervalDays;
         public bool FemaleOnly = true;
-
     }
 }

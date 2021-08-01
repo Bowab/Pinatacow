@@ -150,7 +150,6 @@ namespace Pinatacow
 
             #endregion Reset list of items
 
-
             #region Empty the list
 
             Rect emptyList = new Rect(0f, 244f, 200f, 32f);
@@ -162,7 +161,7 @@ namespace Pinatacow
 
             #endregion Empty the list
 
-            #region The list
+            #region The list GUI
 
             var startHeight = 244f;
             Rect position = inRect.TopPart(0.92f);
@@ -188,7 +187,7 @@ namespace Pinatacow
             Widgets.EndScrollView();
             GUI.EndGroup();
 
-            #endregion The list
+            #endregion The list GUI
 
             base.DoSettingsWindowContents(inRect);
         }
@@ -204,7 +203,7 @@ namespace Pinatacow
         /// <returns>The (translated) mod name.</returns>
         public override string SettingsCategory()
         {
-            return "Bowa_PinataModSettings".Translate(); // TODO: Fix a value in Keys.xml.
+            return "Bowa_PinataModSettings".Translate();
         }
 
         /// <summary>
@@ -228,8 +227,11 @@ namespace Pinatacow
                 settings.minAmount = settings.maxAmount - 1f;
 
 
+
+            // Set them static values always.
             MinAmount = this.settings.minAmount;
             MaxAmount = this.settings.maxAmount;
+            PossibleMilkableItems = this.settings.listOfMilkableItems;
 
             base.WriteSettings();
         }
