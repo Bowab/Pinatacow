@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+  <ThingDef Class="Pinatacow.ThingDef_Pinatacow" ParentName="AnimalThingBase" ADogSaidBody="LegsTail">
+    <defName>Bowab_Pinatacow</defName>
+    <label>pinata</label>
+    <devNote>cow</devNote>
+    <description>A pinata, you never know what it produces.</description>
+    <statBases>
+      <MoveSpeed>4.1</MoveSpeed>
+      <ComfyTemperatureMin>-20</ComfyTemperatureMin>
+      <MarketValue>350</MarketValue>
+      <ComfyTemperatureMax>45</ComfyTemperatureMax>
+      <FilthRate>16</FilthRate>
+    </statBases>
+    <uiIconScale>1.35</uiIconScale>
+    <comps>
+      <li Class="Pinatacow.CompProperties_MilkableRandom">
+        <intervalDays>1</intervalDays>
+      </li>
+      <li Class="CompProperties_Shearable">
+        <woolDef>WoolAlpaca</woolDef>
+        <shearIntervalDays>10</shearIntervalDays>
+        <woolAmount>45</woolAmount>
+      </li>
+    </comps>
+    <race>
+      <body>QuadrupedAnimalWithHooves</body>
+      <herdAnimal>true</herdAnimal>
+      <packAnimal>true</packAnimal>
+      <baseBodySize>1.0</baseBodySize>
+      <baseHealthScale>1.0</baseHealthScale>
+      <baseHungerRate>0.275</baseHungerRate>
+      <foodType>VegetarianRoughAnimal</foodType>
+      <leatherDef>Leather_Camel</leatherDef>
+      <wildness>0.25</wildness>
+      <roamMtbDays>3</roamMtbDays>
+      <gestationPeriodDays>6.66</gestationPeriodDays>
+      <lifeExpectancy>15</lifeExpectancy>
+      <lifeStageAges>
+        <li>
+          <def>AnimalBaby</def>
+          <minAge>0</minAge>
+        </li>
+        <li>
+          <def>AnimalJuvenile</def>
+          <minAge>0.2</minAge>
+        </li>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>0.3333</minAge>
+          <soundWounded>Pawn_Elk_Wounded</soundWounded>
+          <soundDeath>Pawn_Elk_Death</soundDeath>
+          <soundCall>Pawn_Elk_Call</soundCall>
+          <soundAngry>Pawn_Elk_Angry</soundAngry>
+        </li>
+      </lifeStageAges>
+      <soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+    </race>
+    <tradeTags>
+      <li>AnimalCommon</li>
+      <li>AnimalFarm</li>
+    </tradeTags>
+    <tools>
+      <li>
+        <label>left hoof</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>7.3</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>FrontLeftLeg</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>right hoof</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>7.3</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>FrontRightLeg</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <capacities>
+          <li>Bite</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+        <chanceFactor>0.7</chanceFactor>
+      </li>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>7</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        <chanceFactor>0.2</chanceFactor>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>Bowab_Pinatacow</defName>
+    <label>pinata</label>
+    <race>Bowab_Pinatacow</race>
+    <combatPower>65</combatPower>
+    <ecoSystemWeight>0.55</ecoSystemWeight>
+    <wildGroupSize>2~5</wildGroupSize>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pinatacow/Bowab_Pinatacow</texPath>
+          <drawSize>1.3</drawSize>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Alpaca/Dessicated_Alpaca</texPath>
+          <drawSize>1.3</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pinatacow/Bowab_Pinatacow</texPath>
+          <drawSize>1.9</drawSize>
+          <shadowData>
+            <volume>(0.3, 0.3, 0.3)</volume>
+            <offset>(0,0,-0.3)</offset>
+          </shadowData>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Alpaca/Dessicated_Alpaca</texPath>
+          <drawSize>1.9</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pinatacow/Bowab_Pinatacow</texPath>
+          <drawSize>2.2</drawSize>
+          <shadowData>
+            <volume>(0.4, 0.4, 0.4)</volume>
+            <offset>(0,0,-0.2)</offset>
+          </shadowData>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Alpaca/Dessicated_Alpaca</texPath>
+          <drawSize>2.2</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+
+  <WorkGiverDef>
+    <defName>Milk</defName>
+    <label>milk animals</label>
+    <giverClass>Pinatacow.WorkGiver_MilkRandom</giverClass>
+    <workType>Handling</workType>
+    <verb>milk</verb>
+    <gerund>milking</gerund>
+    <priorityInType>90</priorityInType>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+
+  <JobDef>
+    <defName>Milk</defName>
+    <driverClass>Pinatacow.JobDriver_MilkRandom</driverClass>
+    <reportString>milking TargetA.</reportString>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
+
+</Defs>
+

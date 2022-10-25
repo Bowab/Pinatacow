@@ -40,6 +40,7 @@ namespace Pinatacow
                 "MedicineIndustrial",
                 "MedicineUltratech",
                 "ComponentIndustrial",
+                "ComponentSpacer"
         };
 
         /// <summary>

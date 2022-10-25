@@ -37,6 +37,7 @@ namespace Pinatacow
                 "MedicineIndustrial",
                 "MedicineUltratech",
                 "ComponentIndustrial",
+                "ComponentSpacer"
         };
 
         public float minAmount = 1f;
