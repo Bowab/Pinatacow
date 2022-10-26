@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Verse;
 using Verse.AI;
 
-namespace Pinatacow
+namespace Pinata
 {
 
     public class JobDriver_MilkRandom : JobDriver_GatherAnimalBodyResources
@@ -22,6 +22,10 @@ namespace Pinatacow
 
         protected override CompHasGatherableBodyResource GetComp(Pawn animal)
         {
+            if (animal.def.defName != "Bowab_Pinata")
+            {
+                return animal.TryGetComp<CompMilkable>();
+            }
 
             // We have to run the random item selector here because of Gathered method in CompHasGatherableBodyResource.cs, it sometimes loop.
             var itemToSpawnAsString = PinataMod.PossibleMilkableItems.RandomElement();

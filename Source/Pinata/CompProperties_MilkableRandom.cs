@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using RimWorld;
 using Verse;
 
-namespace Pinatacow
+namespace Pinata
 {
     public class CompProperties_MilkableRandom : CompProperties
     {

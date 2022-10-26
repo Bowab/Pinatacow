@@ -7,7 +7,7 @@ using Verse;
 using RimWorld;
 using UnityEngine;
 
-namespace Pinatacow
+namespace Pinata
 {
     public class PinataSettings : ModSettings
     {

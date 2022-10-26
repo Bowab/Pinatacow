@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
 
-namespace Pinatacow
+namespace Pinata
 {
     public class PinataMod : Mod
     {

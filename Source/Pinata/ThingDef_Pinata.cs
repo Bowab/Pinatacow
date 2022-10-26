@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 using RimWorld;
 using Verse;
 
-namespace Pinatacow
+namespace Pinata
 {
     /// <summary>
     /// Does not to anything yet.
     /// </summary>
-    public class ThingDef_Pinatacow : ThingDef
+    public class ThingDef_Pinata : ThingDef
     {
-        public ThingDef_Pinatacow()
+        public ThingDef_Pinata()
         {
-            //Log.Message("I am from: ThingDef_Pinatacow");
+            //Log.Message("I am from: ThingDef_Pinata");
 		}
 	}
 }

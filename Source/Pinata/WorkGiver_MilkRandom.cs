@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Verse;
 
-namespace Pinatacow
+namespace Pinata
 {
     public class WorkGiver_MilkRandom : WorkGiver_GatherAnimalBodyResources
     {
@@ -20,7 +20,12 @@ namespace Pinatacow
 
         protected override CompHasGatherableBodyResource GetComp(Pawn animal)
         {
-            return animal.TryGetComp<CompMilkableRandom>();
+            if (animal.def.defName == "Bowab_Pinata")
+            {
+                return animal.TryGetComp<CompMilkableRandom>();
+            }
+
+            return animal.TryGetComp<CompMilkable>();
         }
     }
 }
