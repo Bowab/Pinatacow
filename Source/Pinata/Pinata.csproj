@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bowa_Pinata_JobDefOf.cs" />
+    <Compile Include="Bowa_Pinata_ThingDefOf.cs" />
     <Compile Include="PinataMod.cs" />
     <Compile Include="PinataSettings.cs" />
     <Compile Include="WorkGiver_MilkRandom.cs" />

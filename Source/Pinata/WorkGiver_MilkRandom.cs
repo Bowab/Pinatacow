@@ -8,6 +8,7 @@ using Verse;
 
 namespace Pinata
 {
+
     public class WorkGiver_MilkRandom : WorkGiver_GatherAnimalBodyResources
     {
         protected override JobDef JobDef
@@ -19,9 +20,9 @@ namespace Pinata
         }
 
         protected override CompHasGatherableBodyResource GetComp(Pawn animal)
-        {
+        {          
             // This is to safe incase someone where to use WorkGiver_MilkRandom in another mod.
-            if (animal.def.defName == "Bowab_Pinata")
+            if (animal.def == Bowa_Pinata_ThingDefOf.Bowab_Pinata)
             {
                 return animal.TryGetComp<CompMilkableRandom>();
             }
