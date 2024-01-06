@@ -14,7 +14,7 @@ namespace Pinata
         {
             get
             {
-                return JobDefOf.Milk;
+                return Bowa_Pinata_JobDefOf.Bowa_Milk;
             }
         }
 

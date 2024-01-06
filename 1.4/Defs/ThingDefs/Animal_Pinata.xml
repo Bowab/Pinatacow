@@ -158,7 +158,7 @@
   </PawnKindDef>
 
   <WorkGiverDef>
-    <defName>Milk</defName>
+    <defName>Bowa_Milk</defName>
     <label>milk animals</label>
     <giverClass>Pinata.WorkGiver_MilkRandom</giverClass>
     <workType>Handling</workType>
@@ -171,7 +171,7 @@
   </WorkGiverDef>
 
   <JobDef>
-    <defName>Milk</defName>
+    <defName>Bowa_Milk</defName>
     <driverClass>Pinata.JobDriver_MilkRandom</driverClass>
     <reportString>milking TargetA.</reportString>
     <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
