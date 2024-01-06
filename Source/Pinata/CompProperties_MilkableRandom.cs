@@ -12,7 +12,7 @@ namespace Pinata
     {
         public CompProperties_MilkableRandom()
         {
-            this.compClass = typeof(CompMilkableRandom);
+            compClass = typeof(CompMilkableRandom);
         }
 
         public int intervalDays;

@@ -57,12 +57,12 @@ namespace Pinata
         /// <param name="content"></param>
         public PinataMod(ModContentPack content) : base(content)
         {
-            this.settings = GetSettings<PinataSettings>();
-            this.allThingDefs = PossibleThingDefs();
+            settings = GetSettings<PinataSettings>();
+            allThingDefs = PossibleThingDefs();
 
-            PossibleMilkableItems = this.settings.listOfMilkableItems;
-            MinAmount = this.settings.minAmount;
-            MaxAmount = this.settings.maxAmount;
+            PossibleMilkableItems = settings.listOfMilkableItems;
+            MinAmount = settings.minAmount;
+            MaxAmount = settings.maxAmount;
         }
 
         /// <summary>

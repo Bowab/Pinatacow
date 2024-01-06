@@ -20,12 +20,13 @@ namespace Pinata
 
         protected override CompHasGatherableBodyResource GetComp(Pawn animal)
         {
+            // This is to safe incase someone where to use WorkGiver_MilkRandom in another mod.
             if (animal.def.defName == "Bowab_Pinata")
             {
                 return animal.TryGetComp<CompMilkableRandom>();
             }
-
-            return animal.TryGetComp<CompMilkable>();
+            return null;
         }
+
     }
 }

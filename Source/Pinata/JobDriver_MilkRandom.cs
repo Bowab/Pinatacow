@@ -22,6 +22,7 @@ namespace Pinata
 
         protected override CompHasGatherableBodyResource GetComp(Pawn animal)
         {
+            // Should not be required here since this code should not run for other animals.
             if (animal.def.defName != "Bowab_Pinata")
             {
                 return animal.TryGetComp<CompMilkable>();
